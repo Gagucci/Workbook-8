@@ -13,9 +13,11 @@ public class Main {
                 "trustServerCertificate=false;" +
                 "loginTimeout=30;";
 
+        String myQuery = "SELECT * FROM GTA.Citizens WHERE Name LIKE '%Ja%'";
+
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM GTA.Citizens")) {
+             ResultSet rs = stmt.executeQuery(myQuery)) {
 
             while (rs.next()) {
                 System.out.println("Name: " + rs.getString("name"));
